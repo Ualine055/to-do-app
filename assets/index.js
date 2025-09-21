@@ -92,3 +92,65 @@ function deleteTodo(todoId) {
     updateNumbers()
   }
 }
+
+function showTodos() {
+  const container = document.getElementById("tasksContainer")
+  const emptyMessage = document.getElementById("emptyState")
+
+  if (todos.length === 0) {
+    container.innerHTML = ""
+    emptyMessage.style.display = "block"
+    return
+  }
+
+  emptyMessage.style.display = "none"
+
+  let html = ""
+
+  for (let i = 0; i < todos.length; i++) {
+    const todo = todos[i]
+    const checkedText = todo.done ? "checked" : ""
+    const strikeText = todo.done ? "line-through text-gray-500" : ""
+
+    html += `
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <input 
+                        type="checkbox" 
+                        class="w-5 h-5"
+                        ${checkedText}
+                        onclick="toggleTodo(${todo.id})"
+                    >
+                    <div class="flex-1">
+                        <p class="text-gray-900 ${strikeText}">
+                            ${todo.text}
+                        </p>
+                    </div>
+                    <button 
+                        onclick="deleteTodo(${todo.id})" 
+                        class="text-red-600 hover:text-red-800"
+                    >
+                        Delete
+                    </button>
+                </div>
+            </div>
+        `
+  }
+  container.innerHTML = html
+}
+
+function updateNumbers() {
+  const total = todos.length
+  let completed = 0
+
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].done) {
+      completed = completed + 1
+    }
+  }
+  const pending = total - completed
+
+  document.getElementById("totalTasks").textContent = total
+  document.getElementById("completedTasks").textContent = completed
+  document.getElementById("pendingTasks").textContent = pending
+}
