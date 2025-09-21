@@ -90,3 +90,36 @@ body.dark-mode, html.dark-mode {
   text-decoration: line-through;
   opacity: 0.6;
 }
+
+@media (max-width: 640px) {
+  .mobile-stack {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  input, select {
+    min-height: 44px;
+    font-size: 16px; 
+  }
+
+  .mobile-padding {
+    padding: 1rem;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form input, form select, form button {
+    width: 100%;
+  }
+}
