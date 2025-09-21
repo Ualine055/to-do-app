@@ -69,3 +69,26 @@ function addNewTodo(event) {
   showTodos()
   updateNumbers()
 }
+
+function toggleTodo(todoId) {
+  
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === todoId) {
+      todos[i].done = !todos[i].done 
+      break
+    }
+  }
+  showTodos()
+  updateNumbers()
+}
+
+function deleteTodo(todoId) {
+  const confirmDelete = confirm("Delete this todo?")
+
+  if (confirmDelete) {
+    todos = todos.filter((todo) => todo.id !== todoId)
+
+    showTodos()
+    updateNumbers()
+  }
+}
