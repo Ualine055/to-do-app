@@ -69,3 +69,24 @@ body.dark-mode, html.dark-mode {
 .dark-mode .hover\:bg-gray-50:hover {
   background-color: #4b5563 !important;
 }
+
+.btn-hover {
+  transition: background-color 0.2s ease;
+}
+
+.btn-hover:hover {
+  opacity: 0.8;
+}
+
+.task-item {
+  transition: box-shadow 0.2s ease;
+}
+
+.task-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
