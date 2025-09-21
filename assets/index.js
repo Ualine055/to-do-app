@@ -31,3 +31,41 @@ function toggleDarkMode() {
     localStorage.setItem("darkMode", "true")
   }
 }
+function loadDarkMode() {
+  const savedMode = localStorage.getItem("darkMode")
+  const body = document.body
+  const sunIcon = document.getElementById("sunIcon")
+  const moonIcon = document.getElementById("moonIcon")
+
+  if (savedMode === "true") {
+    body.classList.add("dark-mode")
+    sunIcon.classList.add("hidden")
+    moonIcon.classList.remove("hidden")
+  }
+}
+
+function addNewTodo(event) {
+  event.preventDefault() 
+
+  const input = document.getElementById("taskInput")
+  const todoText = input.value
+
+  if (todoText === "") {
+    alert("Please write something!")
+    return
+  }
+
+  const newTodo = {
+    id: nextId,
+    text: todoText,
+    done: false,
+  }
+
+  todos.push(newTodo)
+  nextId = nextId + 1
+
+  input.value = ""
+
+  showTodos()
+  updateNumbers()
+}
